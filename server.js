@@ -3,7 +3,6 @@
 import express from 'express';
 import roll from './lib/roll.js';
 import minimist from "minimist"
-import parseArgs from 'minimist';
 
 
 const args = minimist(process.argv.slice(2));
@@ -36,8 +35,8 @@ app.get('/app/roll/:sides', (req, res) => {
   })
 
   app.get('/app/roll/:sides/:dice', (req, res) => {
-    const sides =  parseInt(req.params.sides);
-    const dice =  parseInt(req.params.dice);
+    let sides =  parseInt(req.params.sides);
+    let dice =  parseInt(req.params.dice);
     res.status(200).json((roll(sides, dice,1)));
   })
 
