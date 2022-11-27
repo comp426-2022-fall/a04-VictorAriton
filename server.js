@@ -31,13 +31,16 @@ app.post('/app/roll/', (req, res, next) => { //endpoint HTTP accept
 
 app.get('/app/roll/:sides/', (req, res, next) => {
     let sides = parseInt(req.params.sides);
-    res.send(roll(sides, 2, 1)).end();
+    let dice =2;
+    let rolls = 1;
+    res.send(roll(sides, dice, rolls)).end();
 });
 
 app.get('/app/roll/:sides/:dice/', (req, res, next) => {
     let sides = parseInt(req.params.sides);
     let dice = parseInt(req.params.dice);
-    res.send(roll(sides, dice, 1)).end();
+    let rolls = 1;
+    res.send(roll(sides, dice, rolls)).end();
 });
 
 app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
