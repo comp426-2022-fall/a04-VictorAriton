@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import minimist from "minimist"
 import express from "express"
 import roll from "./lib/roll.js"
@@ -15,7 +16,10 @@ app.get('/app/', (req, res) => {
 });
 
 app.get('/app/roll/', (req, res) => {
-    res.send(roll(6, 2, 1));
+    let sides = 6;
+	let dice = 2;
+	let rolls = 1;
+    res.send(roll(sides, dice, rolls));
 });
 
 app.post('/app/roll/', (req, res, next) => { //endpoint HTTP accept
