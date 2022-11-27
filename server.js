@@ -26,24 +26,23 @@ app.get('/app/roll/', (req, res) => {
 
 
 
-
-app.post('/app/roll/', (req, res, next) => { //endpoint HTTP accept
-    let sides = parseInt(req.body.sides);
-    let dice = parseInt(req.body.dice);
-    let rolls = parseInt(req.body.rolls);
-    res.send(roll(sides, dice, rolls)).end();
-});
+app.post("/app/roll", (req, res) => {
+    const sides = parseInt(req.body.sides);
+    const dice = parseInt(req.body.dice);
+    const rolls = parseInt(req.body.rolls);
+    res.status(200).json(roll(sides,dice,rolls));
+  })
 
 app.get('/app/roll/:sides/', (req, res, next) => {
     let sides = parseInt(req.params.sides);
     res.send(roll(sides, 2, 1)).end();
 });
 
-app.get('/app/roll/:sides/:dice/', (req, res, next) => {
-    let sides = parseInt(req.params.sides);
-    let dice = parseInt(req.params.dice);
-    res.send(roll(sides, dice, 1)).end();
-});
+app.get('/app/roll/:sides/:dice', (req, res) => {
+    const sides =  parseInt(req.params.sides);
+    const dice =  parseInt(req.params.dice);
+    res.status(200).json((roll(sides, dice,1)));
+  })
 
 app.get('/app/roll/:sides/:dice/:rolls/', (req, res, next) => {
     let sides = parseInt(req.params.sides);
